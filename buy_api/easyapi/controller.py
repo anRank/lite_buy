@@ -22,7 +22,7 @@ class BaseController(metaclass=ControllerMetaClass):
         :param data:
         :return:
         """
-        return data
+        return data.copy()
 
     @classmethod
     def reformatter(cls, ctx: EasyApiContext, data: dict):
@@ -31,7 +31,7 @@ class BaseController(metaclass=ControllerMetaClass):
         :param data:
         :return:
         """
-        return data
+        return data.copy()
 
     @classmethod
     def get(cls, id: int, ctx: EasyApiContext = None):
