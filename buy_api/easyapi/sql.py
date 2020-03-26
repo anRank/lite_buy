@@ -26,7 +26,8 @@ def search_sql(sql, query: dict, table: Table):
                 sql = sql.where(getattr(table.c, k[6:]).like(v + '%'))
         elif k.startswith('_search_'):
             for v in values:
-                sql = sql.where(getattr(table.c, k[6:]).like('%' + v + '%'))
+                import ipdb;ipdb.set_trace()
+                sql = sql.where(getattr(table.c, k[8:]).like('%' + v + '%'))
         elif k.startswith('_in_'):
             if values:
                 sql = sql.where(getattr(table.c, k[4:]).in_(values))

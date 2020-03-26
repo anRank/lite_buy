@@ -30,7 +30,7 @@ class CompanyController(easyapi.BaseController):
     @classmethod
     def reformatter(cls, ctx: EasyApiContext , data: dict):
         if 'production_kind' in data:
-            data['production_kind'] = ','.join('"{}"'.format(k) for k in   data['production_kind'])
+            data['production_kind'] = ','.join('|{}|'.format(k) for k in   data['production_kind'])
         if 'type' in data:
             data['type'] = TYPE_MAPPING_REV[data['type']]
         return data
