@@ -6,7 +6,7 @@
       <!-- <div>模板列表</div> -->
         <el-row :gutter="20">
           <el-tabs v-model="activeName" type="card">
-            <el-tab-pane v-for="kind in  ['灯光','音响', '舞台']" :label="kind" :name="kind"></el-tab-pane>
+            <el-tab-pane v-for="kind in  ['灯光', '音响', '舞台']" :label="kind" :name="kind"></el-tab-pane>
           </el-tabs>
         </el-row>
 
@@ -17,9 +17,11 @@
             <div style="padding: 14px;">
               <span>公司名称：{{company.name}}公司</span>
               <div class="bottom clearfix">
-                <time class="time">{{ company.detail }}</time>
+                <time class="time" >{{ company.detail }}</time>
                 <div style="float: right">
-                    <el-button type="text" >选取</el-button>
+                    <el-button type="text" :class="{active : active == true}" @click="selected()">
+                      选取
+                    </el-button>
                     <el-button style="padding-left: 20px" type="text">租赁</el-button>
                 </div>
 
@@ -72,9 +74,8 @@
         query: {  //条件查询 dict  //api查询条件dict
           _like_name: undefined
         },
-
         data: [],  //列表
-
+        active: false
       }
     },
     created() {
@@ -89,6 +90,9 @@
         this.pages._page = 1
         this.fetchData()
       },
+      selected(){
+        this.active = !this.active;
+      }
 
 
 
@@ -104,7 +108,7 @@
   .toolbar {
     background: #f2f2f2;
     padding: 10px;
-    margin: 10px 0px;
+    margin: 100px 10px;
   }
 
   .toolbar .el-form-item {
@@ -139,5 +143,10 @@
 
   .clearfix:after {
     clear: both
+  }
+  .active {
+    background: #fd7522;
+    border: 1px solid #fd7522;
+    color: #fff;
   }
 </style>

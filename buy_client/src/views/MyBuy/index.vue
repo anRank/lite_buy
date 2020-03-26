@@ -127,7 +127,16 @@
         this.pages._page = 1
         this.fetchData()
       },
-
+      onDeleteClick(index, row) {
+        this.$notify({
+          title: 'Success',
+          message: '删除成功',
+          type: 'success',
+          duration: 2000
+        });
+        this.data.splice(index, 1)
+        console.log(index, row);
+      },
 
 
     },

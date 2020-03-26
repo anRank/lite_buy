@@ -51,10 +51,8 @@
             <img :src="scope.row.img" width="50" height="50"/>
           </template>
         </el-table-column>
-        <el-table-column
-          prop="detail"
-          label="公司描述"
-          >
+        <el-table-column prop="detail" label="公司描述">
+
         </el-table-column>
 
         <el-table-column
@@ -145,6 +143,16 @@
         this.order = { _order_by: 'id', _desc: true } //order 在
         this.pages._page = 1
         this.fetchData()
+      },
+      onDeleteClick(index, row) {
+        this.$notify({
+          title: 'Success',
+          message: '删除成功',
+          type: 'success',
+          duration: 2000
+        });
+        this.data.splice(index, 1)
+        console.log(index, row);
       },
 
 
